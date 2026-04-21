@@ -1,81 +1,101 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html class="scroll-smooth" lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | BloomBNB — Get in Touch</title>
-  <meta name="description" content="Tell me about your Norfolk property. I'll come back within 24 hours with a realistic assessment." />
+  <meta name="description" content="Get in touch with BloomBNB. Tell us about your Norfolk property and we'll come back within 24 hours with a realistic assessment." />
   <link rel="canonical" href="https://bloombnb.co.uk/contact/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#b52330", secondary: "#006a61", dark: "#1b1c1c" },
+          borderRadius: { DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", "2xl": "2rem", full: "9999px" },
+          fontFamily: { sans: ["Plus Jakarta Sans", "sans-serif"] },
+          fontSize: {
+            h1: ["60px", { lineHeight: "1.1", letterSpacing: "-0.03em", fontWeight: "800" }],
+            h2: ["44px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
+            h3: ["28px", { lineHeight: "1.3", fontWeight: "600" }],
+            "body-lg": ["20px", { lineHeight: "1.6", fontWeight: "400" }],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .primary-gradient { background: linear-gradient(135deg, #b52330 0%, #d03040 100%); }
+  </style>
 </head>
-<body>
+<body class="bg-white text-dark antialiased">
 
-<!-- NAV -->
-<nav class="nav" id="main-nav">
-  <div class="container">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo"><div class="nav__logo-mark">B</div>BloomBNB</a>
-      <div class="nav__links">
-        <a href="/services/">Services</a>
-        <a href="/about/">About</a>
-        <a href="/resources/norfolk-airbnb-guide/">Free Guide</a>
-        <a href="/contact/" class="active">Contact</a>
-      </div>
-      <a href="/contact/" class="btn btn--primary nav__cta">Get in touch</a>
-      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
+<header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100" id="main-nav">
+  <nav class="flex justify-between items-center max-w-[1400px] mx-auto px-6 md:px-12 h-20">
+    <a href="/" class="flex items-center gap-3">
+      <div class="w-9 h-9 primary-gradient rounded-lg flex items-center justify-center text-white font-black text-base shadow-md">B</div>
+      <span class="text-xl font-extrabold tracking-tight text-slate-900">BloomBNB</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/services/">Services</a>
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/about/">About</a>
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/resources/norfolk-airbnb-guide/">Free Guide</a>
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/contact/">Contact</a>
+      <a href="/contact/" class="primary-gradient text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">Get in touch</a>
     </div>
+    <button id="burger" class="md:hidden text-slate-900 p-2" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4 flex-col gap-1">
+    <a class="block font-semibold text-slate-700 py-3 border-b border-slate-100" href="/services/">Services</a>
+    <a class="block font-semibold text-slate-700 py-3 border-b border-slate-100" href="/about/">About</a>
+    <a class="block font-semibold text-slate-700 py-3 border-b border-slate-100" href="/resources/norfolk-airbnb-guide/">Free Guide</a>
+    <a class="block font-semibold text-slate-700 py-3 border-b border-slate-100" href="/contact/">Contact</a>
+    <a href="/contact/" class="block primary-gradient text-white px-6 py-3 rounded-full font-bold text-sm text-center mt-3">Get in touch</a>
   </div>
-  <div class="nav__mobile" id="mobile-menu">
-    <a href="/services/">Services</a>
-    <a href="/about/">About</a>
-    <a href="/resources/norfolk-airbnb-guide/">Free Guide</a>
-    <a href="/contact/" class="active">Contact</a>
-    <a href="/contact/" class="btn btn--primary">Get in touch</a>
-  </div>
-</nav>
+</header>
 
 
-<!-- PAGE CONTENT -->
-<section style="padding-top:calc(72px + 72px);padding-bottom:80px;background:var(--surface);">
-  <div class="container">
+<!-- ═══ PAGE CONTENT ═════════════════════════════════════════════ -->
+<section class="pt-40 pb-32 bg-white">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12">
 
-    <div style="margin-bottom:48px;">
-      <p class="label-caps section-label">Get in touch</p>
-      <h1 style="margin-bottom:12px;">Let's talk about your property</h1>
-      <p class="body-lg text-muted" style="max-width:520px;">
-        Whether you're exploring Airbnb for the first time or looking for more professional management, fill in the form and I'll come back within 24 hours.
+    <div class="mb-16">
+      <span class="inline-block font-bold text-primary text-xs uppercase tracking-widest mb-6 px-4 py-1.5 bg-red-50 rounded-full">Get in touch</span>
+      <h1 class="text-h1 text-slate-900 mb-6 max-w-xl">Let's talk about your property</h1>
+      <p class="text-body-lg text-slate-600 max-w-lg leading-relaxed">
+        Whether you're exploring Airbnb for the first time or looking for more professional management, fill in the form and we'll come back within 24 hours.
       </p>
     </div>
 
-    <div class="contact-grid">
+    <div class="grid lg:grid-cols-[1fr_400px] gap-16 items-start">
 
-      <!-- FORM (Tally embed placeholder) -->
-      <div class="contact-form-wrap">
+      <!-- FORM -->
+      <div class="bg-white border border-slate-100 rounded-[2.5rem] p-12">
 
-        <!-- Note: Replace this entire form with your Tally.so embed code at launch -->
-        <!-- <script src="https://tally.so/widgets/embed.js"></script>
-             <iframe data-tally-src="https://tally.so/embed/[YOUR_ID]" ...></iframe> -->
-
-        <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--surface-high);">
-          📋 Tally.so form embed goes here at launch
+        <!-- Tally embed placeholder — replace entire form block with your Tally embed at launch -->
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-8 pb-6 border-b border-slate-100">
+          Replace this form with your Tally.so embed at launch
         </p>
 
-        <form class="light-form" action="#" method="POST">
+        <form action="#" method="POST" class="space-y-6">
 
-          <div class="form-field" style="margin-bottom:16px;">
-            <label class="form-label" for="c-email">Email address <span style="color:var(--primary);">*</span></label>
-            <input class="form-input" type="email" id="c-email" name="email" placeholder="your@email.com" required />
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2" for="c-email">Email address <span class="text-primary">*</span></label>
+            <input class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-base focus:outline-none focus:border-primary focus:bg-white transition-colors" type="email" id="c-email" name="email" placeholder="your@email.com" required />
           </div>
 
-          <div class="form-row" style="margin-bottom:16px;">
-            <div class="form-field">
-              <label class="form-label" for="c-beds">Bedrooms <span style="color:var(--primary);">*</span></label>
-              <select class="form-select" id="c-beds" name="bedrooms" required>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2" for="c-beds">Bedrooms <span class="text-primary">*</span></label>
+              <select class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:outline-none focus:border-primary focus:bg-white transition-colors" id="c-beds" name="bedrooms" required>
                 <option value="">Select</option>
                 <option>1 bedroom</option>
                 <option>2 bedrooms</option>
@@ -85,15 +105,15 @@
                 <option>6+ bedrooms</option>
               </select>
             </div>
-            <div class="form-field">
-              <label class="form-label" for="c-postcode">Property postcode <span style="color:var(--primary);">*</span></label>
-              <input class="form-input" type="text" id="c-postcode" name="postcode" placeholder="e.g. PE31" required />
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2" for="c-postcode">Postcode <span class="text-primary">*</span></label>
+              <input class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-base focus:outline-none focus:border-primary focus:bg-white transition-colors" type="text" id="c-postcode" name="postcode" placeholder="e.g. PE31" required />
             </div>
           </div>
 
-          <div class="form-field" style="margin-bottom:16px;">
-            <label class="form-label" for="c-type">Property type</label>
-            <select class="form-select" id="c-type" name="property_type">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2" for="c-type">Property type</label>
+            <select class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:outline-none focus:border-primary focus:bg-white transition-colors" id="c-type" name="property_type">
               <option value="">Select (optional)</option>
               <option>Cottage</option>
               <option>Barn</option>
@@ -106,9 +126,9 @@
             </select>
           </div>
 
-          <div class="form-field" style="margin-bottom:16px;">
-            <label class="form-label" for="c-situation">Current situation</label>
-            <select class="form-select" id="c-situation" name="situation">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2" for="c-situation">Current situation</label>
+            <select class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:outline-none focus:border-primary focus:bg-white transition-colors" id="c-situation" name="situation">
               <option value="">Select (optional)</option>
               <option>New to Airbnb</option>
               <option>Currently self-hosting</option>
@@ -118,153 +138,149 @@
             </select>
           </div>
 
-          <div class="form-field" style="margin-bottom:16px;">
-            <label class="form-label" style="margin-bottom:10px;">What you're looking for</label>
-            <div class="checkbox-group">
-              <label class="checkbox-label">
-                <input type="checkbox" name="looking_for" value="full_management" />
-                Full Management (end-to-end)
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">What you're looking for</label>
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-primary hover:bg-red-50/40 transition-all">
+                <input type="checkbox" name="looking_for" value="full_management" class="accent-primary w-4 h-4" />
+                <span class="font-semibold text-slate-700 text-sm">Full Management (end-to-end)</span>
               </label>
-              <label class="checkbox-label">
-                <input type="checkbox" name="looking_for" value="partial_management" />
-                Partial Management / Host Support
+              <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-primary hover:bg-red-50/40 transition-all">
+                <input type="checkbox" name="looking_for" value="partial_management" class="accent-primary w-4 h-4" />
+                <span class="font-semibold text-slate-700 text-sm">Partial Management / Host Support</span>
               </label>
-              <label class="checkbox-label">
-                <input type="checkbox" name="looking_for" value="consulting" />
-                Consulting &amp; Setup Advice
+              <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-primary hover:bg-red-50/40 transition-all">
+                <input type="checkbox" name="looking_for" value="consulting" class="accent-primary w-4 h-4" />
+                <span class="font-semibold text-slate-700 text-sm">Consulting & Setup Advice</span>
               </label>
-              <label class="checkbox-label">
-                <input type="checkbox" name="looking_for" value="automation" />
-                Host Automation
+              <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-primary hover:bg-red-50/40 transition-all">
+                <input type="checkbox" name="looking_for" value="automation" class="accent-primary w-4 h-4" />
+                <span class="font-semibold text-slate-700 text-sm">Host Automation</span>
               </label>
-              <label class="checkbox-label">
-                <input type="checkbox" name="looking_for" value="not_sure" />
-                Not sure yet
+              <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-primary hover:bg-red-50/40 transition-all">
+                <input type="checkbox" name="looking_for" value="not_sure" class="accent-primary w-4 h-4" />
+                <span class="font-semibold text-slate-700 text-sm">Not sure yet</span>
               </label>
             </div>
           </div>
 
-          <div class="form-field" style="margin-bottom:16px;">
-            <label class="form-label" for="c-phone">Phone (optional — easier to have a quick call?)</label>
-            <input class="form-input" type="tel" id="c-phone" name="phone" placeholder="07xxx xxxxxx" />
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2" for="c-phone">Phone (optional)</label>
+            <input class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-base focus:outline-none focus:border-primary focus:bg-white transition-colors" type="tel" id="c-phone" name="phone" placeholder="07xxx xxxxxx" />
           </div>
 
-          <div class="form-field" style="margin-bottom:24px;">
-            <label class="form-label" for="c-message">Message (optional)</label>
-            <textarea class="form-input" id="c-message" name="message" rows="4"
-              placeholder="Tell me a little more about your property and goals..."
-              style="resize:vertical;"></textarea>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2" for="c-message">Message (optional)</label>
+            <textarea class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-base focus:outline-none focus:border-primary focus:bg-white transition-colors resize-none" id="c-message" name="message" rows="4" placeholder="Tell us a bit more about your property and what you're looking for..."></textarea>
           </div>
 
-          <button type="submit" class="btn btn--primary btn--large" style="width:100%;justify-content:center;">
-            Request my property review →
+          <button type="submit" class="w-full primary-gradient text-white px-8 py-5 rounded-full font-bold text-base hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2">
+            Request a property review <span class="material-symbols-outlined">arrow_forward</span>
           </button>
 
-          <p style="font-size:12px;color:var(--text-secondary);margin-top:12px;text-align:center;">
-            I reply within 1 business day. Your details are used only to respond to your enquiry.
-          </p>
+          <p class="text-xs text-slate-400 text-center">We reply within 1 business day. Your details are used only to respond to your enquiry.</p>
 
         </form>
       </div>
 
       <!-- SIDEBAR -->
-      <div class="contact-sidebar">
+      <div class="space-y-6">
 
-        <div class="sidebar-card sidebar-card--dark">
-          <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:16px;">Direct contact</p>
-          <p style="color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:20px;">Prefer to reach out directly?</p>
-          <div class="contact-detail">
-            <div class="contact-detail__icon">✉️</div>
-            <a href="mailto:hello@bloombnb.co.uk" style="color:white;font-size:15px;font-weight:500;">hello@bloombnb.co.uk</a>
+        <div class="bg-slate-900 rounded-[2rem] p-8 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">Direct contact</p>
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-white text-lg">mail</span>
+            </div>
+            <a href="mailto:hello@bloombnb.co.uk" class="font-bold text-white text-base hover:text-red-300 transition-colors">hello@bloombnb.co.uk</a>
           </div>
-          <div class="contact-detail">
-            <div class="contact-detail__icon">📍</div>
-            <span style="color:rgba(255,255,255,0.75);font-size:15px;">Dersingham, Norfolk, PE31</span>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-white text-lg">location_on</span>
+            </div>
+            <span class="text-slate-300 text-base">Dersingham, Norfolk, PE31</span>
           </div>
         </div>
 
-        <div class="sidebar-card sidebar-card--teal">
-          <p style="font-size:14px;font-weight:600;color:var(--secondary);margin-bottom:8px;">⚡ Prompt reply</p>
-          <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">
-            I reply within 24 hours — usually with a couple of initial thoughts about your property's potential.
-          </p>
+        <div class="bg-secondary/10 rounded-[2rem] p-8">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="material-symbols-outlined text-secondary text-2xl">bolt</span>
+            <p class="font-bold text-slate-900">Prompt reply</p>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">We reply within 24 hours — usually with an initial view on your property's potential.</p>
         </div>
 
-        <div class="sidebar-card">
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
-            <div style="width:48px;height:48px;border-radius:50%;background:var(--surface-high);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">👤</div>
-            <div>
-              <p style="font-weight:600;font-size:15px;">Daniel</p>
-              <p style="font-size:13px;color:var(--text-secondary);">BloomBNB — Norfolk Airbnb specialist</p>
+        <div class="bg-slate-50 rounded-[2rem] p-8 border border-slate-100">
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">Coverage area</p>
+          <div class="space-y-3 text-sm text-slate-600">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
+              <div><span class="font-bold text-slate-800">Full management:</span> PE31 postcode area</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-secondary text-lg mt-0.5">check_circle</span>
+              <div><span class="font-bold text-slate-800">Consulting & automation:</span> UK-wide remote</div>
             </div>
           </div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <span style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:var(--radius-full);font-size:12px;font-weight:700;">★ Superhost</span>
-            <span style="background:var(--secondary-light);color:var(--secondary);padding:4px 12px;border-radius:var(--radius-full);font-size:12px;font-weight:700;">PE31 based</span>
-          </div>
-        </div>
-
-        <div class="sidebar-card" style="background:var(--surface-high);">
-          <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:12px;">Service area</p>
-          <div class="map-placeholder" style="height:140px;border-radius:var(--radius);margin-bottom:12px;font-size:13px;">
-            📍 PE31 &amp; North/West Norfolk
-          </div>
-          <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-            Full management: PE31 postcode area. Consulting &amp; automation: UK-wide.
-          </p>
         </div>
 
       </div>
+
     </div>
   </div>
 </section>
 
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <div class="footer__logo"><div class="footer__logo-mark">B</div>BloomBNB</div>
-        <p class="footer__tagline">West and North Norfolk's Airbnb specialist. One platform, done properly.</p>
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer class="bg-slate-900 text-white pt-32 pb-12">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+      <div class="space-y-8">
+        <a href="/" class="flex items-center gap-3">
+          <div class="w-9 h-9 primary-gradient rounded-lg flex items-center justify-center text-white font-black text-base">B</div>
+          <span class="text-xl font-extrabold tracking-tight">BloomBNB</span>
+        </a>
+        <p class="text-slate-400 leading-relaxed max-w-xs">Norfolk's Airbnb management and consultancy. One platform, done properly. Dersingham, PE31.</p>
       </div>
-      <div>
-        <p class="footer__col-title">Services</p>
-        <nav class="footer__links">
-          <a href="/services/#consulting">Consulting</a>
-          <a href="/services/#management">Management</a>
-          <a href="/services/#automation">Host Automation</a>
+      <div class="space-y-8">
+        <h4 class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Services</h4>
+        <nav class="flex flex-col gap-5">
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/services/#consulting">Consulting</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/services/#management">Full Management</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/services/#automation">Host Automation</a>
         </nav>
       </div>
-      <div>
-        <p class="footer__col-title">Resources</p>
-        <nav class="footer__links">
-          <a href="/resources/norfolk-airbnb-guide/">Norfolk Airbnb Guide</a>
-          <a href="/about/">About Daniel</a>
-          <a href="https://bloomcottages.co.uk" target="_blank" rel="noopener">Bloom Cottages ↗</a>
+      <div class="space-y-8">
+        <h4 class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Resources</h4>
+        <nav class="flex flex-col gap-5">
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/resources/norfolk-airbnb-guide/">Norfolk Airbnb Guide</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/about/">About</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="https://bloomcottages.co.uk" target="_blank" rel="noopener">Bloom Cottages ↗</a>
         </nav>
       </div>
-      <div>
-        <p class="footer__col-title">Contact</p>
-        <nav class="footer__links">
-          <a href="mailto:hello@bloombnb.co.uk">hello@bloombnb.co.uk</a>
-          <span>Dersingham, Norfolk, PE31</span>
-        </nav>
+      <div class="space-y-8">
+        <h4 class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Contact</h4>
+        <div class="text-slate-400 space-y-4">
+          <p class="font-medium">Dersingham, Norfolk, PE31</p>
+          <a href="mailto:hello@bloombnb.co.uk" class="font-bold text-white text-lg block hover:text-red-300 transition-colors">hello@bloombnb.co.uk</a>
+          <a href="/contact/" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-red-800 transition-colors mt-2">Get in touch →</a>
+        </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p>© 2025 BloomBNB. Airbnb management, West &amp; North Norfolk.</p>
-      <nav class="footer__bottom-links"><a href="/privacy-policy/">Privacy policy</a></nav>
+    <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-slate-500 text-sm font-medium">© 2025 BloomBNB. Airbnb management, West & North Norfolk.</p>
+      <a class="text-slate-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest" href="/privacy-policy/">Privacy Policy</a>
     </div>
   </div>
 </footer>
 
+
 <script>
   const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('shadow-md', window.scrollY > 10); }, { passive: true });
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
-  burger.addEventListener('click', () => { const o = mobileMenu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+  burger.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); mobileMenu.classList.toggle('flex'); });
 </script>
 
 </body>
