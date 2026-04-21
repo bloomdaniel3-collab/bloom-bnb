@@ -1,478 +1,411 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html class="scroll-smooth" lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services | BloomBNB — Airbnb Consulting, Management & Host Automation</title>
   <meta name="description" content="Airbnb consulting, full and partial management, and host automation for Norfolk property owners. Airbnb-only specialist, PE31 area." />
   <link rel="canonical" href="https://bloombnb.co.uk/services/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#b52330", secondary: "#006a61", dark: "#1b1c1c" },
+          borderRadius: { DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", "2xl": "2rem", full: "9999px" },
+          fontFamily: { sans: ["Plus Jakarta Sans", "sans-serif"] },
+          fontSize: {
+            h1: ["60px", { lineHeight: "1.1", letterSpacing: "-0.03em", fontWeight: "800" }],
+            h2: ["44px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
+            h3: ["28px", { lineHeight: "1.3", fontWeight: "600" }],
+            "body-lg": ["20px", { lineHeight: "1.6", fontWeight: "400" }],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .primary-gradient { background: linear-gradient(135deg, #b52330 0%, #d03040 100%); }
+    .card-shadow { box-shadow: 0 32px 64px -16px rgba(0,0,0,0.08); }
+  </style>
 </head>
-<body>
+<body class="bg-white text-dark antialiased">
 
-<!-- NAV -->
-<nav class="nav" id="main-nav">
-  <div class="container">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo"><div class="nav__logo-mark">B</div>BloomBNB</a>
-      <div class="nav__links">
-        <a href="/services/" class="active">Services</a>
-        <a href="/about/">About</a>
-        <a href="/resources/norfolk-airbnb-guide/">Free Guide</a>
-        <a href="/contact/">Contact</a>
-      </div>
-      <a href="/contact/" class="btn btn--primary nav__cta">Get in touch</a>
-      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
+<header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100" id="main-nav">
+  <nav class="flex justify-between items-center max-w-[1400px] mx-auto px-6 md:px-12 h-20">
+    <a href="/" class="flex items-center gap-3">
+      <div class="w-9 h-9 primary-gradient rounded-lg flex items-center justify-center text-white font-black text-base shadow-md">B</div>
+      <span class="text-xl font-extrabold tracking-tight text-slate-900">BloomBNB</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/services/">Services</a>
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/about/">About</a>
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/resources/norfolk-airbnb-guide/">Free Guide</a>
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/contact/">Contact</a>
+      <a href="/contact/" class="primary-gradient text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">Get in touch</a>
     </div>
+    <button id="burger" class="md:hidden text-slate-900 p-2" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4 flex-col gap-1">
+    <a class="block font-semibold text-slate-700 py-3 border-b border-slate-100" href="/services/">Services</a>
+    <a class="block font-semibold text-slate-700 py-3 border-b border-slate-100" href="/about/">About</a>
+    <a class="block font-semibold text-slate-700 py-3 border-b border-slate-100" href="/resources/norfolk-airbnb-guide/">Free Guide</a>
+    <a class="block font-semibold text-slate-700 py-3 border-b border-slate-100" href="/contact/">Contact</a>
+    <a href="/contact/" class="block primary-gradient text-white px-6 py-3 rounded-full font-bold text-sm text-center mt-3">Get in touch</a>
   </div>
-  <div class="nav__mobile" id="mobile-menu">
-    <a href="/services/" class="active">Services</a>
-    <a href="/about/">About</a>
-    <a href="/resources/norfolk-airbnb-guide/">Free Guide</a>
-    <a href="/contact/">Contact</a>
-    <a href="/contact/" class="btn btn--primary">Get in touch</a>
-  </div>
-</nav>
+</header>
 
 
-<!-- PAGE HERO -->
-<section style="padding-top:calc(72px + 72px);padding-bottom:72px;background:var(--surface-white);">
-  <div class="container">
-    <p class="label-caps section-label">Services</p>
-    <h1 style="max-width:640px;margin-bottom:20px;">Three ways to work together</h1>
-    <p class="body-lg text-muted" style="max-width:560px;">
-      From a one-off listing audit to full, hands-off management. Every service is
-      Airbnb-only. No Booking.com. No spreading thin.
+<!-- ═══ PAGE HERO ════════════════════════════════════════════════ -->
+<section class="pt-40 pb-20 bg-white">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+    <span class="inline-block font-bold text-primary text-xs uppercase tracking-widest mb-6 px-4 py-1.5 bg-red-50 rounded-full">Our Services</span>
+    <h1 class="text-h1 text-slate-900 mb-6 max-w-2xl">Three ways to work together</h1>
+    <p class="text-body-lg text-slate-600 max-w-xl leading-relaxed mb-10">
+      From a one-off listing audit to full, hands-off management. Every service is Airbnb-only. No Booking.com. No spreading thin.
     </p>
-    <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;">
-      <a href="#consulting" class="btn btn--outline">Consulting</a>
-      <a href="#management" class="btn btn--outline">Management</a>
-      <a href="#automation" class="btn btn--outline">Host Automation</a>
+    <div class="flex flex-wrap gap-4">
+      <a href="#consulting" class="bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-800 transition-all flex items-center gap-2">
+        Consulting <span class="material-symbols-outlined text-lg">arrow_downward</span>
+      </a>
+      <a href="#management" class="border border-slate-200 text-slate-700 px-8 py-4 rounded-full font-bold hover:border-slate-400 transition-all">
+        Management
+      </a>
+      <a href="#automation" class="border border-slate-200 text-slate-700 px-8 py-4 rounded-full font-bold hover:border-slate-400 transition-all">
+        Host Automation
+      </a>
     </div>
   </div>
 </section>
 
-<hr class="divider" />
 
+<!-- ═══ CONSULTING ═══════════════════════════════════════════════ -->
+<section class="py-32 bg-white border-t border-slate-100" id="consulting">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12">
 
-<!-- ═══════════════════════════════════════════
-     CONSULTING
-════════════════════════════════════════════ -->
-<section class="service-section" id="consulting">
-  <div class="container">
-    <div class="service-section__grid">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      <div class="max-w-2xl">
+        <span class="font-bold text-primary text-xs uppercase tracking-[0.2em] mb-4 block">01 / Consulting</span>
+        <h2 class="text-h2 font-extrabold text-slate-900">Expert direction. You stay hands-on.</h2>
+        <p class="text-body-lg text-slate-600 mt-6">For self-managing hosts, new property owners, and second-home owners setting up for the first time. One-off engagements — no ongoing commitment.</p>
+      </div>
+    </div>
 
-      <div class="service-meta">
-        <p class="label-caps section-label service-meta__tag">01 / Consulting</p>
-        <h2 class="service-meta__title">Expert direction.<br>You stay hands-on.</h2>
-        <p class="service-meta__intro">
-          For self-managing hosts, new property owners, and second-home owners setting up
-          for the first time. One-off engagements — no ongoing commitment.
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+
+      <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-10 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-4xl">search</span>
+        </div>
+        <h3 class="text-h3 font-extrabold text-slate-900 mb-6">Listing Audit</h3>
+        <p class="text-slate-600 leading-relaxed text-lg mb-8">
+          Full review of an existing Airbnb listing — title, description, photos, pricing, amenities, house rules, calendar settings. Written report with specific recommendations. Follow-up included.
         </p>
-        <a href="/contact/?subject=consulting" class="btn btn--primary" style="margin-top:28px;">
-          Enquire about consulting →
-        </a>
       </div>
 
-      <div>
-        <h3 style="margin-bottom:24px;">What's included</h3>
-
-        <div class="include-list">
-
-          <div class="include-item">
-            <div class="include-item__icon">🔍</div>
-            <div class="include-item__body">
-              <p class="include-item__title">Listing audit</p>
-              <p class="include-item__desc">
-                Full review of an existing Airbnb listing: title, description, photo assessment,
-                pricing, amenities, house rules, calendar settings. Written report with specific
-                recommendations. Follow-up included.
-              </p>
-            </div>
-          </div>
-
-          <div class="include-item">
-            <div class="include-item__icon">🚀</div>
-            <div class="include-item__body">
-              <p class="include-item__title">New property setup</p>
-              <p class="include-item__desc">
-                For owners starting from scratch. Listing creation, copywriting, Pricelabs
-                pricing configuration, smart lock setup, welcome guide, automated messaging.
-                Any new listing managed through me will also be added to bloomcottages.co.uk.
-              </p>
-            </div>
-          </div>
-
-          <div class="include-item">
-            <div class="include-item__icon">📊</div>
-            <div class="include-item__body">
-              <p class="include-item__title">Pricing strategy review</p>
-              <p class="include-item__desc">
-                Standalone service. Analysis of current pricing against local Norfolk comparables
-                using Pricelabs data. Written recommendations on nightly rates, minimum stays,
-                seasonal pricing, and gap-fill strategy.
-              </p>
-            </div>
-          </div>
-
-          <div class="include-item">
-            <div class="include-item__icon">💬</div>
-            <div class="include-item__body">
-              <p class="include-item__title">1-to-1 consulting session</p>
-              <p class="include-item__desc">
-                In-person for PE31 area; remote video call for wider catchment. 60–90 minutes,
-                agenda set in advance. For hosts with a specific problem or decision to make.
-              </p>
-            </div>
-          </div>
-
+      <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-10 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-4xl">rocket_launch</span>
         </div>
-
-        <div style="background:var(--surface-low);border-radius:var(--radius-lg);padding:28px;margin-top:8px;">
-          <p style="font-size:15px;font-weight:600;margin-bottom:8px;">Pricing</p>
-          <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">
-            Enquire for a quote. Fixed fees for listing audits are being finalised —
-            get in touch and I'll give you a clear figure.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     MANAGEMENT
-════════════════════════════════════════════ -->
-<section class="service-section" id="management" style="background:var(--surface-low);">
-  <div class="container">
-    <div class="service-section__grid">
-
-      <div class="service-meta">
-        <p class="label-caps section-label service-meta__tag">02 / Management</p>
-        <h2 class="service-meta__title">Fully hands-off.<br>PE31 area only.</h2>
-        <p class="service-meta__intro">
-          For Norfolk property owners who want to be completely out of the day-to-day.
-          Full management, or partial if you'd prefer to handle cleaning yourself.
+        <h3 class="text-h3 font-extrabold text-slate-900 mb-6">New Property Setup</h3>
+        <p class="text-slate-600 leading-relaxed text-lg mb-8">
+          For owners starting from scratch. Listing creation, copywriting, Pricelabs pricing configuration, smart lock setup, welcome guide, and automated messaging. New listings are also added to bloomcottages.co.uk.
         </p>
-        <div style="margin-top:24px;background:var(--surface-white);border-radius:var(--radius-lg);padding:20px;border:1px solid var(--surface-high);">
-          <p class="label-caps" style="color:var(--text-secondary);margin-bottom:12px;">Service area</p>
-          <div class="area-towns" style="margin-top:0;">
-            <span class="town-tag" style="background:var(--surface-high);color:var(--text);">Dersingham</span>
-            <span class="town-tag" style="background:var(--surface-high);color:var(--text);">Hunstanton</span>
-            <span class="town-tag" style="background:var(--surface-high);color:var(--text);">Heacham</span>
-            <span class="town-tag" style="background:var(--surface-high);color:var(--text);">Snettisham</span>
-            <span class="town-tag" style="background:var(--surface-high);color:var(--text);">Sandringham</span>
-            <span class="town-tag" style="background:var(--surface-high);color:var(--text);">Burnham Market area</span>
-          </div>
-          <p style="font-size:12px;color:var(--text-secondary);margin-top:12px;">PE31 postcode area and immediate surrounds.</p>
-        </div>
-        <a href="/contact/?subject=management" class="btn btn--primary" style="margin-top:24px;">
-          Enquire about management →
-        </a>
       </div>
 
-      <div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;">
-
-          <div style="background:var(--surface-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--surface-high);">
-            <p class="label-caps" style="color:var(--text-secondary);margin-bottom:16px;">Partial management</p>
-            <h3 style="margin-bottom:16px;font-size:20px;">You handle cleaning</h3>
-            <ul class="include-list" style="margin:0;">
-              <li class="include-item" style="padding:12px;">
-                <div class="include-item__icon">📝</div>
-                <div class="include-item__body">
-                  <p class="include-item__title">Listing &amp; copywriting</p>
-                </div>
-              </li>
-              <li class="include-item" style="padding:12px;">
-                <div class="include-item__icon">💬</div>
-                <div class="include-item__body">
-                  <p class="include-item__title">All guest communication</p>
-                </div>
-              </li>
-              <li class="include-item" style="padding:12px;">
-                <div class="include-item__icon">💰</div>
-                <div class="include-item__body">
-                  <p class="include-item__title">Dynamic pricing (Pricelabs)</p>
-                </div>
-              </li>
-              <li class="include-item" style="padding:12px;">
-                <div class="include-item__icon">📅</div>
-                <div class="include-item__body">
-                  <p class="include-item__title">Calendar management</p>
-                </div>
-              </li>
-              <li class="include-item" style="padding:12px;">
-                <div class="include-item__icon">📊</div>
-                <div class="include-item__body">
-                  <p class="include-item__title">Monthly performance report</p>
-                </div>
-              </li>
-              <li class="include-item" style="padding:12px;">
-                <div class="include-item__icon">🌐</div>
-                <div class="include-item__body">
-                  <p class="include-item__title">Listed on bloomcottages.co.uk</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div style="background:var(--dark-surface);border-radius:var(--radius-lg);padding:32px;border:1px solid transparent;">
-            <p class="label-caps" style="color:rgba(255,255,255,0.5);margin-bottom:16px;">Full management</p>
-            <h3 style="margin-bottom:16px;font-size:20px;color:white;">Everything handled</h3>
-            <p style="font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:16px;">Everything in partial, plus:</p>
-            <ul style="display:flex;flex-direction:column;gap:10px;list-style:none;">
-              <li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;gap:8px;">
-                <span style="color:var(--secondary-light);">✓</span>
-                Cleaning &amp; housekeeping coordination
-              </li>
-              <li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;gap:8px;">
-                <span style="color:var(--secondary-light);">✓</span>
-                Linen &amp; welcome pack management
-              </li>
-              <li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;gap:8px;">
-                <span style="color:var(--secondary-light);">✓</span>
-                Maintenance checks &amp; contractor coordination
-              </li>
-              <li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;gap:8px;">
-                <span style="color:var(--secondary-light);">✓</span>
-                Smart lock &amp; automated messaging setup
-              </li>
-              <li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;gap:8px;">
-                <span style="color:var(--secondary-light);">✓</span>
-                Annual compliance reminders (gas, EPC)
-              </li>
-            </ul>
-          </div>
-
+      <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-10 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-4xl">monitoring</span>
         </div>
-
-        <div style="background:var(--surface-white);border-radius:var(--radius-lg);padding:28px;border:1px solid var(--surface-high);">
-          <p style="font-size:15px;font-weight:600;margin-bottom:8px;">Pricing</p>
-          <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">
-            Management fees are a percentage of gross booking revenue. Get in touch and I'll give
-            you a clear figure for your property — no obligation.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     HOST AUTOMATION
-════════════════════════════════════════════ -->
-<section class="service-section" id="automation">
-  <div class="container">
-    <div class="service-section__grid">
-
-      <div class="service-meta">
-        <p class="label-caps section-label service-meta__tag">03 / Host Automation</p>
-        <h2 class="service-meta__title">Self-managing.<br>Less time on it.</h2>
-        <p class="service-meta__intro">
-          Technology setup for self-managing hosts who want to reduce time on repetitive
-          tasks without handing over full management. Available remotely, UK-wide.
+        <h3 class="text-h3 font-extrabold text-slate-900 mb-6">Pricing Strategy Review</h3>
+        <p class="text-slate-600 leading-relaxed text-lg mb-8">
+          Standalone service. Analysis of current pricing against local Norfolk comparables using Pricelabs data. Written recommendations on nightly rates, minimum stays, seasonal pricing, and gap-fill strategy.
         </p>
-        <a href="/contact/?subject=automation" class="btn btn--primary" style="margin-top:28px;">
-          Enquire about automation →
+      </div>
+
+      <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-10 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-4xl">forum</span>
+        </div>
+        <h3 class="text-h3 font-extrabold text-slate-900 mb-6">1-to-1 Consulting Session</h3>
+        <p class="text-slate-600 leading-relaxed text-lg mb-8">
+          60–90 minute session, agenda set in advance. In-person for the PE31 area; remote video call for wider catchment. For hosts with a specific problem or decision to make.
+        </p>
+      </div>
+
+    </div>
+
+    <a href="/contact/" class="primary-gradient text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center gap-2">
+      Enquire about consulting <span class="material-symbols-outlined text-lg">arrow_forward</span>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ═══ MANAGEMENT ════════════════════════════════════════════════ -->
+<section class="py-32 bg-slate-50" id="management">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+
+    <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      <div class="max-w-2xl">
+        <span class="font-bold text-primary text-xs uppercase tracking-[0.2em] mb-4 block">02 / Management</span>
+        <h2 class="text-h2 font-extrabold text-slate-900">Fully hands-off. PE31 area only.</h2>
+        <p class="text-body-lg text-slate-600 mt-6">For Norfolk property owners who want to be completely out of the day-to-day. Full management, or partial if you'd prefer to handle cleaning yourself.</p>
+      </div>
+    </div>
+
+    <!-- Service area towns -->
+    <div class="flex flex-wrap gap-3 mb-20">
+      <span class="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center mr-2">Service area:</span>
+      <span class="px-4 py-2 bg-white rounded-full text-sm font-semibold text-slate-600 border border-slate-200">Dersingham</span>
+      <span class="px-4 py-2 bg-white rounded-full text-sm font-semibold text-slate-600 border border-slate-200">Hunstanton</span>
+      <span class="px-4 py-2 bg-white rounded-full text-sm font-semibold text-slate-600 border border-slate-200">Heacham</span>
+      <span class="px-4 py-2 bg-white rounded-full text-sm font-semibold text-slate-600 border border-slate-200">Snettisham</span>
+      <span class="px-4 py-2 bg-white rounded-full text-sm font-semibold text-slate-600 border border-slate-200">Sandringham area</span>
+      <span class="px-4 py-2 bg-white rounded-full text-sm font-semibold text-slate-600 border border-slate-200">Burnham Market area</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+
+      <div class="p-12 rounded-[2.5rem] bg-white border border-slate-100 hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary mb-10 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-4xl">tune</span>
+        </div>
+        <h3 class="text-h3 font-extrabold text-slate-900 mb-6">Partial Management</h3>
+        <p class="text-slate-600 leading-relaxed text-lg mb-8">You handle cleaning. We handle everything else.</p>
+        <ul class="space-y-4">
+          <li class="flex items-center gap-3 font-bold text-slate-800"><span class="material-symbols-outlined text-secondary">check_circle</span>Listing creation & copywriting</li>
+          <li class="flex items-center gap-3 font-bold text-slate-800"><span class="material-symbols-outlined text-secondary">check_circle</span>All guest communication</li>
+          <li class="flex items-center gap-3 font-bold text-slate-800"><span class="material-symbols-outlined text-secondary">check_circle</span>Dynamic pricing via Pricelabs</li>
+          <li class="flex items-center gap-3 font-bold text-slate-800"><span class="material-symbols-outlined text-secondary">check_circle</span>Calendar management</li>
+          <li class="flex items-center gap-3 font-bold text-slate-800"><span class="material-symbols-outlined text-secondary">check_circle</span>Monthly performance report</li>
+          <li class="flex items-center gap-3 font-bold text-slate-800"><span class="material-symbols-outlined text-secondary">check_circle</span>Listed on bloomcottages.co.uk</li>
+        </ul>
+      </div>
+
+      <div class="p-12 rounded-[2.5rem] bg-slate-900 text-white border border-transparent transition-all duration-300 group">
+        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-10">
+          <span class="material-symbols-outlined text-4xl text-white">key</span>
+        </div>
+        <h3 class="text-h3 font-extrabold text-white mb-6">Full Management</h3>
+        <p class="text-slate-300 leading-relaxed text-lg mb-8">Everything in partial, plus the physical side.</p>
+        <ul class="space-y-4">
+          <li class="flex items-center gap-3 font-bold text-slate-200"><span class="material-symbols-outlined text-secondary">check_circle</span>Cleaning & housekeeping coordination</li>
+          <li class="flex items-center gap-3 font-bold text-slate-200"><span class="material-symbols-outlined text-secondary">check_circle</span>Linen & welcome pack management</li>
+          <li class="flex items-center gap-3 font-bold text-slate-200"><span class="material-symbols-outlined text-secondary">check_circle</span>Maintenance & contractor coordination</li>
+          <li class="flex items-center gap-3 font-bold text-slate-200"><span class="material-symbols-outlined text-secondary">check_circle</span>Smart lock & automated messaging setup</li>
+          <li class="flex items-center gap-3 font-bold text-slate-200"><span class="material-symbols-outlined text-secondary">check_circle</span>Annual compliance reminders (gas, EPC)</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="text-slate-500 text-sm mb-8 max-w-xl">Management fees are a percentage of gross booking revenue. Get in touch for a clear figure specific to your property — no obligation.</p>
+    <a href="/contact/" class="primary-gradient text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center gap-2">
+      Enquire about management <span class="material-symbols-outlined text-lg">arrow_forward</span>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ═══ HOST AUTOMATION ═══════════════════════════════════════════ -->
+<section class="py-32 bg-white" id="automation">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+
+    <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      <div class="max-w-2xl">
+        <span class="font-bold text-primary text-xs uppercase tracking-[0.2em] mb-4 block">03 / Host Automation</span>
+        <h2 class="text-h2 font-extrabold text-slate-900">Self-managing. Less time on it.</h2>
+        <p class="text-body-lg text-slate-600 mt-6">Technology setup for self-managing hosts who want to reduce time on repetitive tasks. Available remotely, UK-wide.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+
+      <div class="p-10 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-3xl">chat</span>
+        </div>
+        <h3 class="text-xl font-extrabold text-slate-900 mb-4">Automated Messaging</h3>
+        <p class="text-slate-600 text-base leading-relaxed">Pre-arrival, check-in, mid-stay, review request, post-stay — all configured and customised for your property.</p>
+      </div>
+
+      <div class="p-10 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-3xl">lock</span>
+        </div>
+        <h3 class="text-xl font-extrabold text-slate-900 mb-4">Smart Lock Setup</h3>
+        <p class="text-slate-600 text-base leading-relaxed">Keyless entry connected to your booking calendar. Codes auto-generate per guest — no key handovers.</p>
+      </div>
+
+      <div class="p-10 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-3xl">price_change</span>
+        </div>
+        <h3 class="text-xl font-extrabold text-slate-900 mb-4">Dynamic Pricing</h3>
+        <p class="text-slate-600 text-base leading-relaxed">Pricelabs configured for your market with Norfolk-specific seasonal adjustments already dialled in.</p>
+      </div>
+
+      <div class="p-10 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-3xl">sensors</span>
+        </div>
+        <h3 class="text-xl font-extrabold text-slate-900 mb-4">Noise Monitoring</h3>
+        <p class="text-slate-600 text-base leading-relaxed">Alerts if noise or occupancy thresholds are exceeded — without recording guests.</p>
+      </div>
+
+      <div class="p-10 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-3xl">calendar_month</span>
+        </div>
+        <h3 class="text-xl font-extrabold text-slate-900 mb-4">Calendar Sync</h3>
+        <p class="text-slate-600 text-base leading-relaxed">Double-booking protection and calendar management across all channels you use.</p>
+      </div>
+
+      <div class="p-10 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
+        <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-3xl">analytics</span>
+        </div>
+        <h3 class="text-xl font-extrabold text-slate-900 mb-4">Owner Dashboard</h3>
+        <p class="text-slate-600 text-base leading-relaxed">Monthly reporting showing occupancy, revenue, and performance at a glance.</p>
+      </div>
+
+    </div>
+
+    <a href="/contact/" class="primary-gradient text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center gap-2">
+      Enquire about automation <span class="material-symbols-outlined text-lg">arrow_forward</span>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ═══ HOW IT WORKS ══════════════════════════════════════════════ -->
+<section class="py-32 bg-slate-50">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+
+    <div class="max-w-2xl mb-20">
+      <span class="font-bold text-primary text-xs uppercase tracking-[0.2em] mb-4 block">Process</span>
+      <h2 class="text-h2 font-extrabold text-slate-900">What happens after you enquire</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20">
+      <div class="flex flex-col gap-4">
+        <div class="w-12 h-12 primary-gradient rounded-full flex items-center justify-center text-white font-extrabold text-lg">1</div>
+        <h4 class="text-lg font-bold text-slate-900">You get in touch</h4>
+        <p class="text-slate-600 text-sm leading-relaxed">Fill in the contact form with the basics about your property.</p>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-slate-600 font-extrabold text-lg">2</div>
+        <h4 class="text-lg font-bold text-slate-900">We reply within 24 hours</h4>
+        <p class="text-slate-600 text-sm leading-relaxed">Usually with a couple of questions or an initial view on your property.</p>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-slate-600 font-extrabold text-lg">3</div>
+        <h4 class="text-lg font-bold text-slate-900">We have a conversation</h4>
+        <p class="text-slate-600 text-sm leading-relaxed">In person if you're in PE31, video call if you're further afield. No hard sell.</p>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-slate-600 font-extrabold text-lg">4</div>
+        <h4 class="text-lg font-bold text-slate-900">Clear proposal or honest answer</h4>
+        <p class="text-slate-600 text-sm leading-relaxed">If it's a fit, we send a clear proposal. If not, we'll say so.</p>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-200 pt-16">
+      <h3 class="text-h3 font-extrabold text-slate-900 mb-8">What we don't do</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
+        <div class="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-100 text-slate-500 font-medium text-sm">
+          <span class="text-slate-300 font-bold text-lg">✗</span> Booking.com or VRBO listings
+        </div>
+        <div class="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-100 text-slate-500 font-medium text-sm">
+          <span class="text-slate-300 font-bold text-lg">✗</span> Multi-platform spreading
+        </div>
+        <div class="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-100 text-slate-500 font-medium text-sm">
+          <span class="text-slate-300 font-bold text-lg">✗</span> Properties outside PE31 for full management
+        </div>
+        <div class="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-100 text-slate-500 font-medium text-sm">
+          <span class="text-slate-300 font-bold text-lg">✗</span> Guaranteed income promises
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ CTA BAND ══════════════════════════════════════════════════ -->
+<section class="py-32 bg-primary">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
+    <h2 class="text-h2 font-extrabold text-white mb-6">Ready to talk about your property?</h2>
+    <p class="text-body-lg text-white/80 mb-10 max-w-lg mx-auto">No obligation. Get in touch with the basics and we'll come back with something useful within 24 hours.</p>
+    <a href="/contact/" class="bg-slate-900 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-slate-800 transition-all inline-flex items-center gap-2">
+      Get in touch <span class="material-symbols-outlined">arrow_forward</span>
+    </a>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer class="bg-slate-900 text-white pt-32 pb-12">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+      <div class="space-y-8">
+        <a href="/" class="flex items-center gap-3">
+          <div class="w-9 h-9 primary-gradient rounded-lg flex items-center justify-center text-white font-black text-base">B</div>
+          <span class="text-xl font-extrabold tracking-tight">BloomBNB</span>
         </a>
+        <p class="text-slate-400 leading-relaxed max-w-xs">Norfolk's Airbnb management and consultancy. One platform, done properly. Dersingham, PE31.</p>
       </div>
-
-      <div>
-        <h3 style="margin-bottom:24px;">What gets configured</h3>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
-
-          <div style="background:var(--surface-low);border-radius:var(--radius-md);padding:20px;">
-            <div style="font-size:24px;margin-bottom:10px;">💬</div>
-            <p style="font-weight:600;font-size:15px;margin-bottom:6px;">Automated messaging</p>
-            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-              Pre-arrival, check-in, mid-stay, review request, post-stay — all set up and customised for your property.
-            </p>
-          </div>
-
-          <div style="background:var(--surface-low);border-radius:var(--radius-md);padding:20px;">
-            <div style="font-size:24px;margin-bottom:10px;">🔐</div>
-            <p style="font-weight:600;font-size:15px;margin-bottom:6px;">Smart lock setup</p>
-            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-              Keyless entry configured and connected to your booking calendar. Codes auto-generate per guest.
-            </p>
-          </div>
-
-          <div style="background:var(--surface-low);border-radius:var(--radius-md);padding:20px;">
-            <div style="font-size:24px;margin-bottom:10px;">📡</div>
-            <p style="font-weight:600;font-size:15px;margin-bottom:6px;">Noise &amp; occupancy monitoring</p>
-            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-              Alerts if noise or occupancy thresholds are exceeded — without recording guests.
-            </p>
-          </div>
-
-          <div style="background:var(--surface-low);border-radius:var(--radius-md);padding:20px;">
-            <div style="font-size:24px;margin-bottom:10px;">💰</div>
-            <p style="font-weight:600;font-size:15px;margin-bottom:6px;">Dynamic pricing</p>
-            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-              Pricelabs configured for your market with Norfolk-specific seasonal adjustments.
-            </p>
-          </div>
-
-          <div style="background:var(--surface-low);border-radius:var(--radius-md);padding:20px;">
-            <div style="font-size:24px;margin-bottom:10px;">📅</div>
-            <p style="font-weight:600;font-size:15px;margin-bottom:6px;">Calendar sync</p>
-            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-              Double-booking protection and calendar management across any channels you use.
-            </p>
-          </div>
-
-          <div style="background:var(--surface-low);border-radius:var(--radius-md);padding:20px;">
-            <div style="font-size:24px;margin-bottom:10px;">📊</div>
-            <p style="font-weight:600;font-size:15px;margin-bottom:6px;">Owner dashboard</p>
-            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-              Monthly reporting so you can see occupancy, revenue, and performance at a glance.
-            </p>
-          </div>
-
-        </div>
-
-        <div style="background:var(--surface-low);border-radius:var(--radius-lg);padding:24px;border-left:3px solid var(--secondary);">
-          <p style="font-size:14px;font-weight:600;margin-bottom:6px;">About BettaFish</p>
-          <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">
-            I'm involved in the development of BettaFish — a direct booking platform for Airbnb hosts.
-            Properties I manage are listed on bloomcottages.co.uk as part of the broader direct booking
-            capability. More detail to follow as the platform develops.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     PROCESS
-════════════════════════════════════════════ -->
-<section class="section" style="background:var(--surface-low);">
-  <div class="container">
-    <p class="label-caps section-label">How it works</p>
-    <h2 class="section-header">What happens after you enquire</h2>
-
-    <div style="max-width:680px;margin-top:48px;">
-      <div class="process-steps">
-        <div class="step step--active">
-          <div class="step__num">1</div>
-          <div>
-            <p class="step__title">You fill in the contact form</p>
-            <p class="step__desc">Basic details about your property — postcode, bedrooms, what you're looking for.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step__num">2</div>
-          <div>
-            <p class="step__title">I reply within 24 hours</p>
-            <p class="step__desc">Usually with a couple of questions about your property, or a direct answer if I have enough to go on.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step__num">3</div>
-          <div>
-            <p class="step__title">We talk</p>
-            <p class="step__desc">In person if you're in the PE31 area; video call if you're further afield. No hard sell — just a conversation.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step__num">4</div>
-          <div>
-            <p class="step__title">Clear proposal or honest answer</p>
-            <p class="step__desc">If it's a good fit, I send a clear proposal. If not, I'll tell you honestly.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider" style="max-width:680px;margin:48px 0;" />
-
-    <h3 style="margin-bottom:20px;">What I don't do</h3>
-    <div class="not-list" style="max-width:680px;">
-      <div class="not-item">Booking.com or VRBO listings</div>
-      <div class="not-item">Multi-platform spreading</div>
-      <div class="not-item">Properties outside PE31 for full management</div>
-      <div class="not-item">Guaranteed income promises</div>
-    </div>
-    <p style="font-size:13px;color:var(--text-secondary);margin-top:16px;max-width:480px;">
-      Any company that guarantees specific income figures is guessing. I won't do that.
-    </p>
-
-  </div>
-</section>
-
-
-<!-- CTA BAND -->
-<section style="background:var(--primary);padding:80px 0;">
-  <div class="container" style="text-align:center;">
-    <h2 style="color:white;margin-bottom:16px;">Ready to talk about your property?</h2>
-    <p style="color:rgba(255,255,255,0.75);font-size:18px;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto;">
-      No obligation. Tell me the basics and I'll come back with something useful.
-    </p>
-    <a href="/contact/" class="btn btn--inverse btn--large">Get in touch →</a>
-  </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <div class="footer__logo"><div class="footer__logo-mark">B</div>BloomBNB</div>
-        <p class="footer__tagline">West and North Norfolk's Airbnb specialist. One platform, done properly.</p>
-      </div>
-      <div>
-        <p class="footer__col-title">Services</p>
-        <nav class="footer__links">
-          <a href="#consulting">Consulting</a>
-          <a href="#management">Management</a>
-          <a href="#automation">Host Automation</a>
+      <div class="space-y-8">
+        <h4 class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Services</h4>
+        <nav class="flex flex-col gap-5">
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/services/#consulting">Consulting</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/services/#management">Full Management</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/services/#automation">Host Automation</a>
         </nav>
       </div>
-      <div>
-        <p class="footer__col-title">Resources</p>
-        <nav class="footer__links">
-          <a href="/resources/norfolk-airbnb-guide/">Norfolk Airbnb Guide</a>
-          <a href="/about/">About Daniel</a>
-          <a href="https://bloomcottages.co.uk" target="_blank" rel="noopener">Bloom Cottages ↗</a>
+      <div class="space-y-8">
+        <h4 class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Resources</h4>
+        <nav class="flex flex-col gap-5">
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/resources/norfolk-airbnb-guide/">Norfolk Airbnb Guide</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/about/">About</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="https://bloomcottages.co.uk" target="_blank" rel="noopener">Bloom Cottages ↗</a>
         </nav>
       </div>
-      <div>
-        <p class="footer__col-title">Contact</p>
-        <nav class="footer__links">
-          <a href="/contact/">Get in touch</a>
-          <a href="mailto:hello@bloombnb.co.uk">hello@bloombnb.co.uk</a>
-        </nav>
+      <div class="space-y-8">
+        <h4 class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Contact</h4>
+        <div class="text-slate-400 space-y-4">
+          <p class="font-medium">Dersingham, Norfolk, PE31</p>
+          <a href="mailto:hello@bloombnb.co.uk" class="font-bold text-white text-lg block hover:text-red-300 transition-colors">hello@bloombnb.co.uk</a>
+          <a href="/contact/" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-red-800 transition-colors mt-2">Get in touch →</a>
+        </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p>© 2025 BloomBNB. Airbnb management, West &amp; North Norfolk.</p>
-      <nav class="footer__bottom-links"><a href="/privacy-policy/">Privacy policy</a></nav>
+    <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-slate-500 text-sm font-medium">© 2025 BloomBNB. Airbnb management, West & North Norfolk.</p>
+      <a class="text-slate-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest" href="/privacy-policy/">Privacy Policy</a>
     </div>
   </div>
 </footer>
 
+
 <script>
   const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('shadow-md', window.scrollY > 10); }, { passive: true });
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
-  burger.addEventListener('click', () => { const o = mobileMenu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+  burger.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); mobileMenu.classList.toggle('flex'); });
 </script>
 
 </body>
