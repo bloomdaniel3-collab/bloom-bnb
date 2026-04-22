@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BloomBNB | Norfolk Airbnb Management & Consulting - North West Norfolk Specialist</title>
+  <title>BloomBNB | Norfolk Airbnb Management & Consulting — North West Norfolk Specialist</title>
   <meta name="description" content="Professional Airbnb management, consulting and host automation for West and North Norfolk property owners. Airbnb-only. North West Norfolk, PE31 & PE36 area." />
   <link rel="canonical" href="https://bloombnb.co.uk/" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
@@ -17,16 +17,29 @@
             primary: "#b52330",
             secondary: "#006a61",
             dark: "#1b1c1c",
+            navy: "#151b2e",
           },
           borderRadius: {
             DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", "2xl": "2rem", full: "9999px",
           },
           fontFamily: { sans: ["Plus Jakarta Sans", "sans-serif"] },
           fontSize: {
-            h1: ["60px", { lineHeight: "1.1", letterSpacing: "-0.03em", fontWeight: "800" }],
+            h1: ["58px", { lineHeight: "1.08", letterSpacing: "-0.03em", fontWeight: "800" }],
             h2: ["44px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
-            h3: ["28px", { lineHeight: "1.3", fontWeight: "600" }],
-            "body-lg": ["20px", { lineHeight: "1.6", fontWeight: "400" }],
+            h3: ["26px", { lineHeight: "1.3", fontWeight: "700" }],
+            "body-lg": ["19px", { lineHeight: "1.65", fontWeight: "400" }],
+          },
+          keyframes: {
+            fadeUp: { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            shimmer: { '0%': { backgroundPosition: '-400px 0' }, '100%': { backgroundPosition: '400px 0' } },
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.7s ease forwards',
+            'fade-up-delay': 'fadeUp 0.7s 0.15s ease forwards',
+            'fade-up-delay-2': 'fadeUp 0.7s 0.3s ease forwards',
+            'fade-up-delay-3': 'fadeUp 0.7s 0.45s ease forwards',
+            'fade-in': 'fadeIn 1s 0.6s ease forwards',
           },
         },
       },
@@ -35,36 +48,77 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+
+    /* Mesh background */
     .bg-mesh {
-      background-color: #fff;
-      background-image: radial-gradient(at 10% 20%, rgba(181,35,48,0.05) 0px, transparent 50%), radial-gradient(at 90% 80%, rgba(0,106,97,0.05) 0px, transparent 50%);
+      background-color: #fafafa;
+      background-image:
+        radial-gradient(at 8% 18%, rgba(181,35,48,0.06) 0px, transparent 55%),
+        radial-gradient(at 88% 78%, rgba(0,106,97,0.05) 0px, transparent 55%),
+        radial-gradient(at 50% 50%, rgba(255,255,255,0.9) 0px, transparent 70%);
     }
-    .primary-gradient { background: linear-gradient(135deg, #b52330 0%, #d03040 100%); }
-    .card-shadow { box-shadow: 0 32px 64px -16px rgba(0,0,0,0.08); }
+
+    /* Subtle grain overlay */
+    .bg-mesh::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .primary-gradient { background: linear-gradient(135deg, #b52330 0%, #c92d3c 100%); }
+    .navy-gradient { background: linear-gradient(135deg, #151b2e 0%, #1e2744 100%); }
+    .card-shadow { box-shadow: 0 24px 48px -12px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04); }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 40px 80px -16px rgba(0,0,0,0.12); }
+
+    /* Stat cards */
+    .stat-card { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .stat-card:hover { transform: scale(1.03); }
+
+    /* Animated underline on links */
+    .link-underline { position: relative; }
+    .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #b52330; transition: width 0.25s ease; }
+    .link-underline:hover::after { width: 100%; }
+
+    /* Initial hidden for animation */
+    .anim-hidden { opacity: 0; }
+
+    /* Nav logo image sizing */
+    .nav-logo { height: 36px; width: auto; }
+    .footer-logo { height: 32px; width: auto; }
+
+    /* Divider line */
+    .section-divider { border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent); }
   </style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"BloomBNB","url":"https://bloombnb.co.uk","email":"hello@bloombnb.co.uk","address":{"@type":"PostalAddress","addressLocality":"Snettisham","addressRegion":"Norfolk","postalCode":"PE31","addressCountry":"GB"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"BloomBNB","url":"https://bloombnb.co.uk","email":"hello@bloombnb.co.uk","logo":"https://bloombnb.co.uk/assets/images/bloombnb.jpg","address":{"@type":"PostalAddress","addressLocality":"Snettisham","addressRegion":"Norfolk","postalCode":"PE31","addressCountry":"GB"}}</script>
 </head>
 <body class="bg-white text-dark antialiased">
 
 
 <!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
-<header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100" id="main-nav">
+<header class="fixed top-0 w-full z-50 bg-white/92 backdrop-blur-md border-b border-slate-100 transition-shadow duration-300" id="main-nav">
   <nav class="flex justify-between items-center max-w-[1400px] mx-auto px-6 md:px-12 h-20">
-    <a href="/" class="flex items-center gap-3">
-      <div class="w-9 h-9 primary-gradient rounded-lg flex items-center justify-center text-white font-black text-base shadow-md">B</div>
-      <span class="text-xl font-extrabold tracking-tight text-slate-900">BloomBNB</span>
+
+    <a href="/" class="flex items-center" aria-label="BloomBNB — home">
+      <img src="/assets/images/bloombnb.jpg" alt="BloomBNB" class="nav-logo" />
     </a>
+
     <div class="hidden md:flex items-center gap-8">
-      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/services/">Services</a>
-      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/about/">About</a>
-      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/resources/norfolk-airbnb-guide/">Free Guide</a>
-      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="/contact/">Contact</a>
-      <a href="/contact/" class="primary-gradient text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">Get in touch</a>
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors link-underline" href="/services/">Services</a>
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors link-underline" href="/about/">About</a>
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors link-underline" href="/resources/norfolk-airbnb-guide/">Free Guide</a>
+      <a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors link-underline" href="/contact/">Contact</a>
+      <a href="/contact/" class="primary-gradient text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ml-2">Get in touch</a>
     </div>
-    <button id="burger" class="md:hidden text-slate-900 p-2" aria-label="Open menu">
+
+    <button id="burger" class="md:hidden text-slate-900 p-2 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Open menu">
       <span class="material-symbols-outlined">menu</span>
     </button>
   </nav>
+
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4 flex-col gap-1">
     <a class="block font-semibold text-slate-700 py-3 border-b border-slate-100" href="/services/">Services</a>
     <a class="block font-semibold text-slate-700 py-3 border-b border-slate-100" href="/about/">About</a>
@@ -76,108 +130,143 @@
 
 
 <!-- ═══ HERO ════════════════════════════════════════════════════════ -->
-<section class="relative bg-mesh py-32 md:py-48 overflow-hidden">
-  <div class="max-w-[1400px] mx-auto px-6 md:px-12 w-full grid lg:grid-cols-2 gap-16 items-center">
+<section class="relative bg-mesh py-36 md:py-52 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12 w-full grid lg:grid-cols-2 gap-16 items-center relative z-10">
 
-    <div class="relative z-20">
-      <span class="inline-block font-bold text-primary text-xs uppercase tracking-widest mb-6 px-4 py-1.5 bg-red-50 rounded-full">
-        Premier Norfolk Consultancy
+    <div>
+      <span class="anim-hidden animate-fade-up inline-flex items-center gap-2 font-bold text-primary text-xs uppercase tracking-widest mb-7 px-4 py-1.5 bg-red-50 border border-red-100 rounded-full">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+        North West Norfolk Specialists
       </span>
-      <h1 class="text-h1 text-slate-900 mb-8">
+
+      <h1 class="anim-hidden animate-fade-up-delay text-h1 text-navy mb-8">
         Flexibility, Peace of Mind, and
-        <span class="text-primary"> Professional Management.</span>
+        <span class="text-primary italic"> Professional Management.</span>
       </h1>
-      <p class="text-body-lg text-slate-600 mb-10 max-w-xl leading-relaxed">
-        We manage North West Norfolk second homes & holiday lets with meticulous care.
+
+      <p class="anim-hidden animate-fade-up-delay-2 text-body-lg text-slate-500 mb-10 max-w-[520px]">
+        We manage North West Norfolk second homes and holiday lets with meticulous care — so you keep the asset without carrying the workload.
       </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="/services/" class="bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-800 transition-all flex items-center gap-2">
+
+      <div class="anim-hidden animate-fade-up-delay-3 flex flex-wrap gap-4">
+        <a href="/services/" class="navy-gradient text-white px-8 py-4 rounded-full font-bold text-sm hover:opacity-90 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
           Explore Services
-          <span class="material-symbols-outlined text-lg">arrow_downward</span>
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
         </a>
-        <a href="/contact/" class="flex items-center gap-2 px-6 py-4 text-sm font-bold text-slate-500 hover:text-slate-800 transition-colors">
-          Get a free assessment →
+        <a href="/contact/" class="flex items-center gap-2 px-6 py-4 text-sm font-bold text-slate-400 hover:text-slate-800 transition-colors">
+          Free assessment →
         </a>
+      </div>
+
+      <!-- Trust signals -->
+      <div class="anim-hidden animate-fade-in mt-14 flex flex-wrap items-center gap-6">
+        <div class="flex items-center gap-2 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+          <span class="material-symbols-outlined text-primary text-base" style="font-size:16px">verified</span>
+          Airbnb Superhost Standard
+        </div>
+        <div class="w-px h-4 bg-slate-200"></div>
+        <div class="flex items-center gap-2 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+          <span class="material-symbols-outlined text-primary text-base" style="font-size:16px">location_on</span>
+          PE31 & PE36 Coverage
+        </div>
+        <div class="w-px h-4 bg-slate-200"></div>
+        <div class="flex items-center gap-2 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+          <span class="material-symbols-outlined text-primary text-base" style="font-size:16px">star</span>
+          4.9★ Average Rating
+        </div>
       </div>
     </div>
 
-    <div class="relative hidden lg:block">
-      <div class="absolute -inset-4 bg-red-50/40 rounded-3xl blur-3xl"></div>
-      <!-- Swap this div for an <img> tag with your own property photography at launch -->
-      <div class="relative rounded-2xl shadow-2xl w-full h-[500px] bg-slate-100 flex flex-col items-center justify-center overflow-hidden">
-        <span class="material-symbols-outlined text-6xl text-slate-300 mb-3">home</span>
-        <p class="text-sm font-medium text-slate-400">Property photography — coming at launch</p>
+    <!-- Hero image / placeholder -->
+    <div class="anim-hidden animate-fade-in relative hidden lg:block">
+      <div class="absolute -inset-8 bg-gradient-to-br from-red-50/60 to-teal-50/40 rounded-[3rem] blur-3xl"></div>
+      <div class="relative rounded-[2rem] shadow-2xl w-full h-[520px] bg-gradient-to-br from-slate-100 to-slate-50 flex flex-col items-center justify-center overflow-hidden border border-slate-200/60">
+        <span class="material-symbols-outlined text-7xl text-slate-300 mb-4">home</span>
+        <p class="text-sm font-semibold text-slate-400 tracking-wide">Property photography — coming at launch</p>
+        <p class="text-xs text-slate-300 mt-1">Replace this div with &lt;img&gt; tag</p>
+      </div>
+      <!-- Floating badge -->
+      <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-xl border border-slate-100 flex items-center gap-4">
+        <div class="w-12 h-12 primary-gradient rounded-xl flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-white text-xl">trending_up</span>
+        </div>
+        <div>
+          <div class="text-lg font-extrabold text-navy">92%</div>
+          <div class="text-xs text-slate-400 font-semibold">Avg Occupancy Rate</div>
+        </div>
       </div>
     </div>
 
   </div>
 </section>
+
+<hr class="section-divider" />
 
 
 <!-- ═══ SERVICES ══════════════════════════════════════════════════ -->
 <section class="py-32 bg-white" id="services">
   <div class="max-w-[1400px] mx-auto px-6 md:px-12">
 
-    <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-      <div class="max-w-2xl text-center md:text-left">
-        <span class="font-bold text-primary text-xs uppercase tracking-[0.2em] mb-4 block">Our Services</span>
-        <h2 class="text-h2 font-extrabold text-slate-900">Holiday Let Management</h2>
-        <p class="text-body-lg text-slate-600 mt-6">A structured approach to short-term rental — professional care, full compliance, Airbnb only.</p>
-      </div>
+    <div class="max-w-2xl mb-20">
+      <span class="font-bold text-primary text-xs uppercase tracking-[0.2em] mb-4 block">Our Services</span>
+      <h2 class="text-h2 font-extrabold text-navy">Holiday Let Management</h2>
+      <p class="text-body-lg text-slate-500 mt-5">A structured approach to short-term rental — professional care, full compliance, Airbnb only.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-      <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
-        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-10 group-hover:scale-110 transition-transform">
+      <!-- Consulting -->
+      <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-400 group card-hover">
+        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-primary mb-10 group-hover:scale-110 transition-transform duration-300">
           <span class="material-symbols-outlined text-4xl">psychology</span>
         </div>
-        <h3 class="text-h3 font-extrabold text-slate-900 mb-6">Airbnb Consulting</h3>
-        <p class="text-slate-600 leading-relaxed text-lg mb-8">
+        <h3 class="text-h3 text-navy mb-5">Airbnb Consulting</h3>
+        <p class="text-slate-500 leading-relaxed text-lg mb-8">
           Expert direction for owners who stay hands-on. Listing audits, new property setup, pricing strategy, and 1-to-1 sessions — in person or remote.
         </p>
-        <ul class="space-y-4">
-          <li class="flex items-center gap-3 font-bold text-slate-800">
-            <span class="material-symbols-outlined text-primary">check_circle</span>
+        <ul class="space-y-4 mb-10">
+          <li class="flex items-start gap-3 text-slate-700 font-semibold">
+            <span class="material-symbols-outlined text-primary mt-0.5" style="font-size:20px">check_circle</span>
             Listing audit with written recommendations
           </li>
-          <li class="flex items-center gap-3 font-bold text-slate-800">
-            <span class="material-symbols-outlined text-primary">check_circle</span>
+          <li class="flex items-start gap-3 text-slate-700 font-semibold">
+            <span class="material-symbols-outlined text-primary mt-0.5" style="font-size:20px">check_circle</span>
             Dynamic pricing setup via Pricelabs
           </li>
-          <li class="flex items-center gap-3 font-bold text-slate-800">
-            <span class="material-symbols-outlined text-primary">check_circle</span>
+          <li class="flex items-start gap-3 text-slate-700 font-semibold">
+            <span class="material-symbols-outlined text-primary mt-0.5" style="font-size:20px">check_circle</span>
             New property setup from scratch
           </li>
         </ul>
-        <a href="/services/#consulting" class="inline-flex items-center gap-2 mt-10 font-bold text-primary text-sm hover:gap-3 transition-all">
+        <a href="/services/#consulting" class="inline-flex items-center gap-2 font-bold text-primary text-sm group-hover:gap-3 transition-all">
           Full details <span class="material-symbols-outlined text-base">arrow_forward</span>
         </a>
       </div>
 
-      <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-transparent transition-all duration-300 group">
-        <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary mb-10 group-hover:scale-110 transition-transform">
+      <!-- Full Management -->
+      <div class="p-12 rounded-[2.5rem] bg-navy text-white border border-navy hover:shadow-2xl transition-all duration-400 group card-hover">
+        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-white mb-10 group-hover:scale-110 transition-transform duration-300">
           <span class="material-symbols-outlined text-4xl">key</span>
         </div>
-        <h3 class="text-h3 font-extrabold text-slate-900 mb-6">Full Management</h3>
-        <p class="text-slate-600 leading-relaxed text-lg mb-8">
-          Complete hands-off ownership. We handle the entire guest lifecycle — communication, pricing, cleaning coordination, and maintenance — for properties in the North West Norfolk area.
+        <h3 class="text-h3 text-white mb-5">Full Management</h3>
+        <p class="text-white/70 leading-relaxed text-lg mb-8">
+          Complete hands-off ownership. We handle the entire guest lifecycle — communication, pricing, cleaning coordination, and maintenance — for properties in North West Norfolk.
         </p>
-        <ul class="space-y-4">
-          <li class="flex items-center gap-3 font-bold text-slate-800">
-            <span class="material-symbols-outlined text-secondary">check_circle</span>
+        <ul class="space-y-4 mb-10">
+          <li class="flex items-start gap-3 text-white/90 font-semibold">
+            <span class="material-symbols-outlined text-green-400 mt-0.5" style="font-size:20px">check_circle</span>
             All guest communication handled
           </li>
-          <li class="flex items-center gap-3 font-bold text-slate-800">
-            <span class="material-symbols-outlined text-secondary">check_circle</span>
+          <li class="flex items-start gap-3 text-white/90 font-semibold">
+            <span class="material-symbols-outlined text-green-400 mt-0.5" style="font-size:20px">check_circle</span>
             Cleaning & maintenance coordination
           </li>
-          <li class="flex items-center gap-3 font-bold text-slate-800">
-            <span class="material-symbols-outlined text-secondary">check_circle</span>
-            Listed on bloomcottages.co.uk too
+          <li class="flex items-start gap-3 text-white/90 font-semibold">
+            <span class="material-symbols-outlined text-green-400 mt-0.5" style="font-size:20px">check_circle</span>
+            Also listed on bloomcottages.co.uk
           </li>
         </ul>
-        <a href="/services/#management" class="inline-flex items-center gap-2 mt-10 font-bold text-primary text-sm hover:gap-3 transition-all">
+        <a href="/services/#management" class="inline-flex items-center gap-2 font-bold text-white text-sm group-hover:gap-3 transition-all">
           Full details <span class="material-symbols-outlined text-base">arrow_forward</span>
         </a>
       </div>
@@ -186,71 +275,82 @@
   </div>
 </section>
 
+<hr class="section-divider" />
+
 
 <!-- ═══ WHY US + STATS ════════════════════════════════════════════ -->
-<section class="py-32 bg-slate-50">
+<section class="py-32 bg-slate-50/70">
   <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-    <div class="flex flex-col lg:flex-row items-center gap-20">
+    <div class="flex flex-col lg:flex-row items-center gap-24">
 
+      <!-- Left: reasons -->
       <div class="lg:w-1/2 space-y-12">
-        <h2 class="text-h2 font-extrabold text-slate-900">Expert Airbnb management for Norfolk owners</h2>
+        <div>
+          <span class="font-bold text-primary text-xs uppercase tracking-[0.2em] mb-4 block">Why BloomBNB</span>
+          <h2 class="text-h2 font-extrabold text-navy">Expert Airbnb management for Norfolk owners</h2>
+        </div>
+
         <div class="space-y-8">
 
           <div class="flex gap-6 group">
-            <div class="shrink-0 w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+            <div class="shrink-0 w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
               <span class="material-symbols-outlined text-primary text-3xl">policy</span>
             </div>
             <div>
-              <h4 class="text-xl font-bold mb-2 text-slate-900">Tax Relief Strategy</h4>
-              <p class="text-slate-600">We manage properties to meet the 140-day letting requirement, qualifying for small business rates relief and protecting owners from double council tax.</p>
+              <h4 class="text-lg font-bold mb-2 text-navy">Tax Relief Strategy</h4>
+              <p class="text-slate-500 leading-relaxed">We manage properties to meet the 140-day letting requirement, qualifying for small business rates relief and protecting owners from double council tax increases.</p>
             </div>
           </div>
 
           <div class="flex gap-6 group">
-            <div class="shrink-0 w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+            <div class="shrink-0 w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
               <span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
             </div>
             <div>
-              <h4 class="text-xl font-bold mb-2 text-slate-900">Superhost Standard</h4>
-              <p class="text-slate-600">Every property is managed to Superhost criteria — 4.9+ rating, 90%+ response rate, under 1% cancellations.</p>
+              <h4 class="text-lg font-bold mb-2 text-navy">Superhost Standard</h4>
+              <p class="text-slate-500 leading-relaxed">Every property managed to Superhost criteria — 4.9+ rating, 90%+ response rate, under 1% cancellations. A ranking driver, not a vanity badge.</p>
             </div>
           </div>
 
           <div class="flex gap-6 group">
-            <div class="shrink-0 w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+            <div class="shrink-0 w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
               <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
             </div>
             <div>
-              <h4 class="text-xl font-bold mb-2 text-slate-900">Hyper-Local Expertise</h4>
-              <p class="text-slate-600">Based in Snettisham, PE31. We know this market - the summer coast traffic, Sandringham proximity, Burnham Market premium, and quiet winter months.</p>
+              <h4 class="text-lg font-bold mb-2 text-navy">Hyper-Local Expertise</h4>
+              <p class="text-slate-500 leading-relaxed">Based in Snettisham, PE31. We know this market — the summer coast traffic, Sandringham proximity, Burnham Market premium, and quieter winter months.</p>
             </div>
           </div>
 
         </div>
       </div>
 
+      <!-- Right: stat grid -->
       <div class="lg:w-1/2">
-        <div class="grid grid-cols-2 gap-6">
-          <div class="space-y-6">
-            <div class="h-56 bg-white rounded-[2rem] p-8 flex flex-col justify-center items-center text-center card-shadow">
-              <div class="text-5xl font-extrabold text-primary mb-3">100%</div>
+        <div class="grid grid-cols-2 gap-5">
+
+          <div class="space-y-5">
+            <div class="h-52 bg-white rounded-[2rem] p-8 flex flex-col justify-center items-center text-center card-shadow stat-card">
+              <div class="text-5xl font-extrabold text-primary mb-2">100%</div>
               <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">Airbnb Only</div>
             </div>
-            <div class="h-72 primary-gradient text-white rounded-[2rem] p-10 flex flex-col justify-end shadow-xl">
+            <div class="h-72 primary-gradient text-white rounded-[2rem] p-10 flex flex-col justify-end shadow-xl stat-card">
               <div class="text-4xl font-bold mb-2">4.9★</div>
-              <div class="text-sm font-medium opacity-90">Avg Guest Rating</div>
+              <div class="text-sm font-semibold opacity-80">Avg Guest Rating</div>
             </div>
           </div>
-          <div class="space-y-6 pt-12">
-            <div class="h-72 bg-slate-900 text-white rounded-[2rem] p-10 flex flex-col justify-end shadow-xl">
+
+          <div class="space-y-5 pt-10">
+            <div class="h-72 navy-gradient text-white rounded-[2rem] p-10 flex flex-col justify-end shadow-xl stat-card">
               <div class="text-4xl font-bold mb-2">92%</div>
-              <div class="text-sm font-medium opacity-90">Avg Occupancy Rate</div>
+              <div class="text-sm font-semibold opacity-80">Avg Occupancy Rate</div>
             </div>
-            <div class="h-56 bg-white rounded-[2rem] p-8 flex flex-col justify-center items-center text-center card-shadow">
-              <div class="text-5xl font-extrabold text-secondary mb-3">North West Norfolk</div>
-              <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">Local Area Experts</div>
+            <div class="h-52 bg-white rounded-[2rem] p-8 flex flex-col justify-center items-center text-center card-shadow stat-card">
+              <div class="text-2xl font-extrabold text-secondary mb-2 leading-tight text-center">North West<br/>Norfolk</div>
+              <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">Local Experts</div>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -262,85 +362,104 @@
 <!-- ═══ LEAD MAGNET ═══════════════════════════════════════════════ -->
 <section class="py-32 bg-white">
   <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-    <div class="bg-primary rounded-[4rem] p-12 md:p-24 text-white relative overflow-hidden flex flex-col lg:flex-row items-center gap-16">
-      <div class="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-20 pointer-events-none"></div>
-      <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-black/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="bg-navy rounded-[3.5rem] p-12 md:p-20 text-white relative overflow-hidden flex flex-col lg:flex-row items-center gap-16">
+      <!-- Decorative elements -->
+      <div class="absolute top-0 right-0 w-1/2 h-full bg-white/[0.03] skew-x-12 translate-x-20 pointer-events-none"></div>
+      <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute top-12 right-12 w-64 h-64 bg-secondary/10 rounded-full blur-2xl pointer-events-none"></div>
 
       <div class="lg:w-3/5 relative z-10 text-center lg:text-left">
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-8 leading-tight tracking-tight">
-          The Norfolk Airbnb Owner's Guide.
+        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/50 mb-6">
+          <span class="w-6 h-px bg-white/30 inline-block"></span>
+          Free Resource
+        </span>
+        <h2 class="text-4xl md:text-[48px] font-extrabold mb-6 leading-tight tracking-tight">
+          The North West Norfolk<br/>Airbnb Owner's Guide.
         </h2>
-        <p class="text-xl mb-12 opacity-90 leading-relaxed max-w-2xl">
+        <p class="text-lg mb-10 text-white/70 leading-relaxed max-w-xl">
           Everything a Norfolk property owner needs to know — council tax relief, Airbnb setup, pricing, and why one platform beats five. Free PDF, no paywall.
         </p>
-        <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto lg:mx-0" action="https://tally.so/r/[YOUR_GUIDE_TALLY_ID]" method="POST" target="_blank">
-          <input class="flex-grow px-8 py-5 rounded-2xl text-slate-900 border-none text-lg placeholder-slate-400 outline-none focus:ring-4 focus:ring-white/30" placeholder="Your email address" type="email" name="email" required />
-          <button type="submit" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-extrabold text-lg hover:scale-105 transition-transform shadow-2xl whitespace-nowrap">
+        <form class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto lg:mx-0" action="https://tally.so/r/[YOUR_GUIDE_TALLY_ID]" method="POST" target="_blank">
+          <input class="flex-grow px-7 py-4 rounded-2xl text-slate-900 border-none text-base placeholder-slate-400 outline-none focus:ring-4 focus:ring-white/20 bg-white" placeholder="Your email address" type="email" name="email" required />
+          <button type="submit" class="primary-gradient text-white px-8 py-4 rounded-2xl font-extrabold text-base hover:opacity-90 hover:shadow-2xl hover:-translate-y-0.5 transition-all whitespace-nowrap">
             Get the Guide
           </button>
         </form>
-        <p class="mt-6 text-sm opacity-70">No spam. Occasional useful content about running a Norfolk Airbnb.</p>
+        <p class="mt-5 text-xs text-white/40 font-medium">No spam. Occasional useful content about running a Norfolk Airbnb.</p>
       </div>
 
+      <!-- Decorative book card -->
       <div class="lg:w-2/5 flex justify-center relative z-10">
-        <div class="w-64 h-80 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-10 flex flex-col justify-between shadow-2xl rotate-6 hover:rotate-0 transition-transform duration-500">
-          <div class="w-12 h-12 bg-white/20 rounded-xl"></div>
-          <div class="space-y-4">
-            <div class="h-3 w-3/4 bg-white/30 rounded-full"></div>
-            <div class="h-3 w-full bg-white/30 rounded-full"></div>
-            <div class="h-3 w-1/2 bg-white/30 rounded-full"></div>
+        <div class="w-56 h-72 bg-white/[0.07] backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between shadow-2xl rotate-6 hover:rotate-0 transition-transform duration-500 cursor-default">
+          <div class="w-10 h-10 primary-gradient rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-white text-lg">menu_book</span>
           </div>
-          <div class="text-xl font-extrabold leading-tight">The North West Norfolk Airbnb Owner's Guide 2026</div>
+          <div class="space-y-3">
+            <div class="h-2 w-3/4 bg-white/20 rounded-full"></div>
+            <div class="h-2 w-full bg-white/20 rounded-full"></div>
+            <div class="h-2 w-2/3 bg-white/20 rounded-full"></div>
+            <div class="h-2 w-5/6 bg-white/20 rounded-full"></div>
+          </div>
+          <div>
+            <div class="text-sm font-extrabold leading-snug text-white">The North West Norfolk Airbnb Owner's Guide</div>
+            <div class="text-xs text-white/40 mt-1 font-medium">2026 Edition</div>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 
 <!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
-<footer class="bg-slate-900 text-white pt-32 pb-12">
+<footer class="bg-navy text-white pt-24 pb-10">
   <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
 
-      <div class="space-y-8">
-        <a href="/" class="flex items-center gap-3">
-          <div class="w-9 h-9 primary-gradient rounded-lg flex items-center justify-center text-white font-black text-base">B</div>
-          <span class="text-xl font-extrabold tracking-tight">BloomBNB</span>
+      <div class="space-y-6">
+        <a href="/" aria-label="BloomBNB — home">
+          <!-- Logo on dark: you may want a white/inverted version. Using the standard one here — swap to a light variant if you have one. -->
+          <img src="/assets/images/bloombnb.jpg" alt="BloomBNB" class="footer-logo rounded-md" style="filter: brightness(0) invert(1);" />
         </a>
-        <p class="text-slate-400 leading-relaxed max-w-xs">Norfolk's Airbnb management and consultancy. One platform, done properly. North West Norfolk.</p>
+        <p class="text-slate-400 leading-relaxed max-w-xs text-sm">Norfolk's Airbnb management and consultancy. One platform, done properly. North West Norfolk.</p>
       </div>
 
-      <div class="space-y-8">
+      <div class="space-y-6">
         <h4 class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Services</h4>
-        <nav class="flex flex-col gap-5">
-          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/services/#consulting">Consulting</a>
-          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/services/#management">Full Management</a>
-          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/services/#automation">Host Automation</a>
+        <nav class="flex flex-col gap-4">
+          <a class="text-slate-400 hover:text-white transition-colors font-medium text-sm link-underline" href="/services/#consulting">Consulting</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium text-sm link-underline" href="/services/#management">Full Management</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium text-sm link-underline" href="/services/#automation">Host Automation</a>
         </nav>
       </div>
 
-      <div class="space-y-8">
+      <div class="space-y-6">
         <h4 class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Resources</h4>
-        <nav class="flex flex-col gap-5">
-          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/resources/norfolk-airbnb-guide/">Norfolk Airbnb Guide</a>
-          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="/about/">About</a>
-          <a class="text-slate-400 hover:text-white transition-colors font-medium" href="https://bloomcottages.co.uk" target="_blank" rel="noopener">Bloom Cottages ↗</a>
+        <nav class="flex flex-col gap-4">
+          <a class="text-slate-400 hover:text-white transition-colors font-medium text-sm link-underline" href="/resources/norfolk-airbnb-guide/">Norfolk Airbnb Guide</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium text-sm link-underline" href="/about/">About</a>
+          <a class="text-slate-400 hover:text-white transition-colors font-medium text-sm link-underline" href="https://bloomcottages.co.uk" target="_blank" rel="noopener">Bloom Cottages ↗</a>
         </nav>
       </div>
 
-      <div class="space-y-8">
+      <div class="space-y-6">
         <h4 class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Contact</h4>
-        <div class="text-slate-400 space-y-4">
-          <p class="font-medium">North West Norfolk</p>
-          <a href="mailto:hello@bloombnb.co.uk" class="font-bold text-white text-lg block hover:text-red-300 transition-colors">hello@bloombnb.co.uk</a>
-          <a href="/contact/" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-red-800 transition-colors mt-2">Get in touch →</a>
+        <div class="text-slate-400 space-y-4 text-sm">
+          <p class="font-medium flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary" style="font-size:16px">location_on</span>
+            North West Norfolk
+          </p>
+          <a href="mailto:hello@bloombnb.co.uk" class="font-bold text-white text-base block hover:text-red-300 transition-colors">hello@bloombnb.co.uk</a>
+          <a href="/contact/" class="inline-block primary-gradient text-white px-6 py-2.5 rounded-full font-bold text-sm hover:opacity-90 transition-opacity mt-1">Get in touch →</a>
         </div>
       </div>
 
     </div>
-    <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-      <p class="text-slate-500 text-sm font-medium">© 2025 BloomBNB. Airbnb management, West & North Norfolk.</p>
+
+    <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-slate-500 text-xs font-medium">© 2026 BloomBNB. Airbnb management, North West Norfolk.</p>
       <a class="text-slate-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest" href="/privacy-policy/">Privacy Policy</a>
     </div>
   </div>
@@ -348,11 +467,36 @@
 
 
 <script>
+  // Nav shadow on scroll
   const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('shadow-md', window.scrollY > 10); }, { passive: true });
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('shadow-md', window.scrollY > 10);
+  }, { passive: true });
+
+  // Mobile menu
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
-  burger.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); mobileMenu.classList.toggle('flex'); });
+  burger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  });
+
+  // Simple intersection observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'none';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.stat-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
 </script>
 
 </body>
